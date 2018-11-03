@@ -1,0 +1,22 @@
+{
+  "name": "ractor-hooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ractor"
+  ],
+  "author": "corol",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "ractor": "^1.1.0",
+    "ractor-react": "^1.1.8",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0"
+  }
+}
