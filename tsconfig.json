@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "jsx": "react",
+    "outDir": "./_test",
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
