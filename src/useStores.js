@@ -17,20 +17,26 @@ function useStores(storeClasss) {
         return newStore;
     });
     var storeHooks = _stores.map(function (store) { return react_1.useState(store.state); });
+    console.log(111111);
     react_1.useEffect(function () {
         var subscriptions = [];
         _stores.forEach(function (store, index) {
             var _a = storeHooks[index], prevState = _a[0], setState = _a[1];
             var subscription = store.subscribe(function (nextState) {
+                console.log(22222222, nextState, prevState);
                 if (!shallowPartialEqual_1.default(nextState, prevState)) {
+                    console.log(33333333);
                     setState(nextState);
                 }
             });
             subscriptions.push(subscription);
         });
-        return function () { return subscriptions.forEach(function (subscription) { return subscription.unsubscribe(); }); };
+        return function () {
+            console.log(4444444);
+            subscriptions.forEach(function (subscription) { return subscription.unsubscribe(); });
+        };
     });
     var states = storeHooks.map(function (storeHook) { return storeHook[0]; });
-    return states.concat([system.dispatch]);
+    return states.concat([system.dispatch.bind(system)]);
 }
 exports.useStores = useStores;

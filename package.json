@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build_test": "rm -fr _test && tsc",
-    "clean_test": "rm -fr _test",
-    "test_ava": "ava _test/test/",
-    "test": "npm-run-all build_test test_ava clean_test"
+    "test": "tsc & jest --env=jsdom"
   },
   "keywords": [
     "ractor"
@@ -15,19 +12,27 @@
   "author": "corol",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.1.2",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
     "ava": "^0.25.0",
+    "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.7.0",
+    "jest": "^23.6.0",
+    "jest-dom": "^2.1.0",
     "jsx-test-helpers": "^3.0.0",
     "npm-run-all": "^4.1.3",
     "ractor": "^1.1.0",
     "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0"
+    "react-dom": "^16.7.0-alpha.0",
+    "react-testing-library": "^5.2.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
+    "browser-env": "^3.2.5",
     "enzyme-adapter-react-16": "^1.6.0",
     "jsdom": "13.0.0",
     "jsdom-global": "3.0.2"

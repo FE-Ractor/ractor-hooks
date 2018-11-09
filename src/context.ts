@@ -3,7 +3,7 @@ import { System, Store } from 'ractor';
 
 export type Context = {
   system: System,
-  stores: Store<object>[]
+  stores?: (new () => Store<object>)[]
 }
 
 export const RactorContext = createContext({} as Context)

@@ -1,8 +1,7 @@
-// import 'jsdom-global/register'
+import 'jest-dom/extend-expect'
 import * as React from "react"
-import test from 'ava'
-import { configure, shallow } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
+import { render, fireEvent, cleanup, waitForElement } from 'react-testing-library'
+// import test from 'jest'
 import { System, Store } from "ractor";
 import { useStores } from "../src/useStores";
 import { Provider } from "../src/provider";
@@ -13,7 +12,7 @@ const system = new System("test")
 class Increment { }
 class Decrement { }
 
-class CounterStore extends Store<{ value: number }> {
+class CounterStore extends Store {
   state = { value: 0 }
   createReceive() {
     return this.receiveBuilder()
@@ -25,7 +24,6 @@ class CounterStore extends Store<{ value: number }> {
 
 /* react parts */
 function Counter() {
-  console.log(222222222)
   const [state, dispatch] = useStores([CounterStore])
   console.log(state, 6666666666666)
   return (
@@ -38,7 +36,6 @@ function Counter() {
 }
 
 function App() {
-  console.log(111111111111)
   return (
     <Provider system={system} stores={[]}>
       <Counter />
@@ -51,14 +48,14 @@ function Foo() {
   return <h1>{state.value}</h1>
 }
 
-configure({ adapter: new Adapter() })
+/* test parts */
+test.afterEach(cleanup)
 
-test.cb("render counter", t => {
-  const wrapper = shallow(<App />)
+test.cb("render counter", () => {
+  const { getByText, getByTestId, container, asFragment } = render(<App />)
 
-  setTimeout(() => {
-    t.is(wrapper.find(".header").text(), "0")
-    t.end()
+  const h1 = container.getElementsByTagName("h1")
+  console.log(h1)
 
-  }, 3000)
+
 })
