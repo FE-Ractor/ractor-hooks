@@ -12,8 +12,10 @@ export function useStore<T>(storeClass: new (...args: any[]) => Store<T>): [T, (
   const [state, setState] = useState(store.state)
 
   useEffect(() => {
-    if (store["__mountStatus__"] === "local") {
-      store.context.stop()
+    return () => {
+      if (store["__mountStatus__"] === "local") {
+        store.context.stop()
+      }
     }
   }, [])
 
