@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "strict": false,
+    "strict": true,
     "experimentalDecorators": true,
     "target": "es5",
     "jsx": "react",
     "module": "commonjs",
     "skipLibCheck": true,
+    "declaration": true,
+    "outDir": "bin",
     "lib": [
       "dom",
       "es2015"
