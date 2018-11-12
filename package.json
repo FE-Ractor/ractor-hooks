@@ -1,13 +1,13 @@
 {
   "name": "ractor-hooks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "bin/index.js",
   "typings": "bin/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "tsc & jest --env=jsdom",
-    "prepare": "npm run build"
+    "prepare": "rm -fr bin & npm run build"
   },
   "keywords": [
     "ractor"
