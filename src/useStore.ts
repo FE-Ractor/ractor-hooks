@@ -3,7 +3,7 @@ import { Store } from "ractor"
 import { RactorContext } from "./context";
 import shallowPartialEqual from "./shallowPartialEqual";
 
-export function useStore<T>(storeClass: new (...args: any[]) => Store<T>): [T, (message: object) => void] {
+export function useStore<T>(storeClass: new (...args: any[]) => Store<T>): T {
   const { system } = useContext(RactorContext)
   const storeRef = system.get(storeClass)
   const store: Store<T> & { [key: string]: any } = storeRef ? storeRef.getInstance() : system.actorOf(new storeClass).getInstance()
@@ -27,5 +27,5 @@ export function useStore<T>(storeClass: new (...args: any[]) => Store<T>): [T, (
     })
     return subscription.unsubscribe
   })
-  return [state, system.dispatch.bind(system)]
+  return state
 }
