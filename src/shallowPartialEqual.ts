@@ -23,7 +23,7 @@ export default function shallowPartialEqual<O extends { [key: string]: any }>(ob
   const keysA = Object.keys(objA)
   const keysB = Object.keys(objB)
 
-  for (let i = 0; i < keysB.length; i++) {
+  for (let i = 0; i < Math.max(keysA.length, keysB.length); i++) {
     if (!(keysA.indexOf(keysB[i]) > -1) || !is(objA[keysB[i]], objB[keysB[i]])) {
       return false
     }
